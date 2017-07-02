@@ -1,0 +1,33 @@
+.HColor{
+	background-color:#ff9800;
+}
+
+
+.replyMessage{
+	padding: 10px;
+	background-color: #eee;
+	border-radius: 4px;
+}
+.smallHead{
+	width: 60px;
+	height: 60px;
+}
+.replyMedia{
+	padding:5px;
+	background-color: #F44336;border-radius:6px
+}
+.MainMessage{
+	padding: 10px;
+	background-color: #eee;
+	border-radius: 4px;
+}
+.MainMedia{
+	padding:5px;
+	border:4px solid #ffeb3b;
+
+}
+
+.Ly{
+	display: none;
+	padding-top:10px;
+}
