@@ -1,35 +1,40 @@
-//====================================================添加楼层==================================================
+//=======================================================参数解释===========================================================================
+ /*           1.imgcode:提交留言者头像的号码，后台存在图片命名分别为(1).jpg,(2).jpg,(2).jpg ...(imgcode).jpg
+ *            2.pid:根据当前时间生成用户唯一标识码
+ *            3.finalid:全局变量，获取当前页面所有留言id中最大的id数；
+ *            4.yname：当前留言用户姓名
+ *            5.message：留言内容
+ *            6.npid：新生成的pid，主要用于ReplyMessage方法中，防止与方法传入参数中的pid混淆
+ *            7.
+ */
+//======================================================参数解释==================================================================
+//====================================================添加楼层，并调用ajax异步请求数据反馈给前端==================================================
       function sendM(){
 
-        var params = $("#form1").serialize(); 
-        var imgcode=parseInt(Math.random()*100+3);
-        var pid=new Date().getTime();
-        params=params+"&imgcode="+imgcode+"&pid="+pid;
-              // alert(params.length); 
+        var params = $("#form1").serialize(); //form1表单提交的数据
+        var imgcode=parseInt(Math.random()*100+3);//前端生成当前提交数据头像的号码imgcode存入数据库中
+        var pid=new Date().getTime();//获取当前时间作为用户标识符pid
+        params=params+"&imgcode="+imgcode+"&pid="+pid;//将pid和imgcode加入代传参数中
+              // 判断当前提交数据总长前端防止用户灌水 
               if(params.length>100){
-
-
-
                 $.ajax( {  
                   type : "POST",  
                   url : "http://139.224.132.164/LYB/WebService.asmx/CreatM",  
                   data : params,  
                   success : function(msg) {  
-                    var mg="";
-                    var na="";                   
-                    mg=$("#XT").val();
-                    na=$("#XN").val();
                     alert("留言成功!");
+                    //留言成功后清空表单输入框的姓名和留言内容
                     $("#XN").val("");
                     $("#XT").val("");
-                    {Test(finalid)}
+                    {Test(finalid)}//调用Test方法传入全局变量finalid，取得当前数据库中所有id>页面包含的留言最大id的所有内容更新至前端
                   }  
                 });
               }
               else
                 alert("请留言，勿灌水！")  
       }
-//+++++++++++++++++++++++++++++++++++++++++按钮回复留言+++++++++++++++++++++++++++++++++++++++         
+//+++++++++++++++++++++++++++++++++++++++++按钮回复留言+++++++++++++++++++++++++++++++++++++++
+         //传入参数：
           function ReplyMessage(parentid,rid,pid){
             var yname=prompt("请输入你的姓名");
             if(yname!=null&&yname!=""){
