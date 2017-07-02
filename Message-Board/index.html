@@ -24,23 +24,20 @@
       <div class="col-md-10">  
         <div style="text-align: center;"><h3><b id="oldnode">我的留言板</b></h3></div>
         <div id="211"> 
-
+        <!--    数据库取出参数留言放在该div下      -->
         </div>
-        <!-- ================================================================== -->
         <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
         <div class="col-md-1">
         </div>
         <div class="col-md-10">
-
+          <!-- 提交主留言表单 -->
           <form   id="form1" method="post" action="http://139.224.132.164/LYB/WebService.asmx/CreatM">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">用户名：</span>
               <input id='XN' name="name" type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
-              <div style="display: none;">
-                <input  name="parentid" value="0" type="text">
-                <input type="text" name="zr" value="True" >
-
-              </div>
+                <!-- 隐藏参数parentID,zr. -->
+                <input type="hidden" name="parentid" value="0">
+                <input type="hidden" name="zr" value="True" >
             </div>
             <div style="margin-top:5px;">
               <textarea id='XT' class="form-control" rows="5" placeholder="请留言..." name="message" style="resize: none;"></textarea>
@@ -52,7 +49,6 @@
         </div>
         <div class="col-md-1">
         </div>
-        <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
       </div>
       <div class="col-md-1">
       </div>
@@ -62,9 +58,7 @@
   ///////////////////
   var x=1;
   var finalid=1;
-
-// ====================================READY()=============================================
-             Test(0);
+  Test(0);//主方法，传入参数0即可获得数据库中所有ID>0的留言
 
 
 </script>
