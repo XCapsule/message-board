@@ -7,4 +7,6 @@
 1.form表单提交，前端随机数生成imgcode产生留言者随机头像，生成当前时间作为用户唯一标识符pid传给后台。
 2.调用test（finalid）方法异步更新数据，并根据id获取留言input组件使组件内输入框为空。
 副留言过程：
-1.
+1.点击回复按钮调用方法OpenMessage（pid），使得命名为“#inp”+pid的输入框display=block；
+2.写入message后发送将会调用ReplyMessage(parentid,rid,pid)方法.其中parentid，rid，pid都已在加载时传入。
+3.该方法向后台发送post请求传入参数并调用test（finalid）方法异步更新数据。
